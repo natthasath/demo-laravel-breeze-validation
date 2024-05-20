@@ -24,11 +24,5 @@ class UploadFileRule implements ValidationRule
         } elseif (!in_array($value->getClientOriginalExtension(), $this->allow_filetype)) {
             $fail('The file must be one of the following types: ' . implode(', ', $this->allow_filetype));
         }
-
-        /* if ($value->isValid()) {
-            if (!in_array(strtolower($value->getClientOriginalExtension()), $this->allow_filetype)) {
-                $fail('The file must be one of the following types: ' . implode(', ', $this->allow_filetype));
-            }
-        } */
     }
 }

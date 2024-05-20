@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Form;
 use App\Rules\UploadFileRule;
+use App\Rules\ExpirationRule;
 use App\Rules\UppercaseRule;
 use App\Rules\LowercaseRule;
 use App\Rules\StudentCodeRule;
@@ -16,6 +17,7 @@ use App\Rules\EmailPublicRule;
 use App\Rules\EmailPrivateRule;
 use App\Rules\StrongPasswordRule;
 use App\Rules\RepeatPasswordRule;
+use Carbon\Carbon;
 
 class FormController extends Controller
 {
@@ -34,6 +36,7 @@ class FormController extends Controller
     {
         $validated_data = $request->validate([
             'upload_file' => ['required', 'file', new UploadFileRule(1024, ['pdf', 'docx', 'txt'])],
+            'expiration' => ['required', 'string', new ExpirationRule],
             'uppercase' => ['required', 'string', new UppercaseRule],
             'lowercase' => ['required', 'string', new LowercaseRule],
             'student_code' => ['required', 'string', new StudentCodeRule],
