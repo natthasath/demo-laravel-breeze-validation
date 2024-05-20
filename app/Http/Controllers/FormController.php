@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Form;
+use App\Rules\UploadFileRule;
 use App\Rules\UppercaseRule;
 use App\Rules\LowercaseRule;
 use App\Rules\StudentCodeRule;
@@ -32,6 +33,7 @@ class FormController extends Controller
     public function store(Request $request)
     {
         $validated_data = $request->validate([
+            'upload_file' => ['required', 'file', new UploadFileRule(1024, ['pdf', 'docx', 'txt'])],
             'uppercase' => ['required', 'string', new UppercaseRule],
             'lowercase' => ['required', 'string', new LowercaseRule],
             'student_code' => ['required', 'string', new StudentCodeRule],

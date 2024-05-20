@@ -14,11 +14,18 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <form class="max-w-sm mx-auto" method="post" action="{{ route('form.store') }}">
+                    <form class="max-w-sm mx-auto" method="post" action="{{ route('form.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-5">
+                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validation Upload File</label><small class="text-muted"><em> upload file</em></small>
+                            <input type="file" id="upload_file" name="upload_file" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+                            @error('upload_file')
+                                <div class="text-red-600 mt-2 text-sm">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-5">
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validation Expiration</label><small class="text-muted"><em> expiration</em></small>
-                            <input type="text" id="expiration" name="expiration" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+                            <input type="date" id="expiration" name="expiration" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
                             @error('expiration')
                                 <div class="text-red-600 mt-2 text-sm">{{ $message }}</div>
                             @enderror
