@@ -13,6 +13,8 @@ use App\Rules\LanguageEnglishRule;
 use App\Rules\LanguageThaiRule;
 use App\Rules\EmailPublicRule;
 use App\Rules\EmailPrivateRule;
+use App\Rules\StrongPasswordRule;
+use App\Rules\RepeatPasswordRule;
 
 class FormController extends Controller
 {
@@ -38,8 +40,8 @@ class FormController extends Controller
             'lang_thai' => ['required', 'string', new LanguageThaiRule],
             'email_public' => ['required', 'string', new EmailPublicRule],
             'email_private' => ['required', 'string', new EmailPrivateRule],
-            // 'password' => ['required'],
-            // 'address' => ['required'],
+            'password' => ['required', 'string', new StrongPasswordRule],
+            'repeat_password' => ['required', 'string', new RepeatPasswordRule($request->password)],
         ]);
 
         return redirect()->back()->with('success', 'Form submitted successfully!');

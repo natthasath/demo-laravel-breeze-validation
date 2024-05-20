@@ -17,6 +17,13 @@
                     <form class="max-w-sm mx-auto" method="post" action="{{ route('form.store') }}">
                         @csrf
                         <div class="mb-5">
+                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validation Expiration</label><small class="text-muted"><em> expiration</em></small>
+                            <input type="text" id="expiration" name="expiration" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+                            @error('expiration')
+                                <div class="text-red-600 mt-2 text-sm">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-5">
                             <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validation Uppercase</label><small class="text-muted"><em> TEXT</em></small>
                             <input type="text" id="uppercase" name="uppercase" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
                             @error('uppercase')
@@ -73,12 +80,18 @@
                             @enderror
                         </div>
                         <div class="mb-5">
-                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validation Password</label>
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validation Password</label><small class="text-muted"><em> strong password</em></small>
                             <input type="password" id="password" name="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+                            @error('password')
+                                <div class="text-red-600 mt-2 text-sm">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-5">
-                            <label for="repeat-password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validate Repeat Password</label>
-                            <input type="password" id="repeat-password" name="repeat-password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+                            <label for="repeat_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Validate Repeat Password</label>
+                            <input type="password" id="repeat_password" name="repeat_password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+                            @error('repeat_password')
+                                <div class="text-red-600 mt-2 text-sm">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
