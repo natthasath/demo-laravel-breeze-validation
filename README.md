@@ -1,4 +1,4 @@
-# 🎉 DEMO Laravel Breeze Form
+# 🎉 DEMO Laravel Breeze Validation
 
 Laravel Breeze is a lightweight, minimalistic starter kit for Laravel, providing pre-built authentication scaffolding, views, and controllers to help developers quickly set up user registration, login, and password reset functionality in their Laravel applications.
 
